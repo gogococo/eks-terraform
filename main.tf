@@ -58,35 +58,25 @@ module "eks" {
 
   eks_managed_node_groups = {
     one = {
-      name = "node-group-1"
+      name = "node-group"
 
-      instance_types = ["t3.small"]
+      instance_types = ["t3.xlarge"]
 
-      min_size     = 1
-      max_size     = 3
-      desired_size = 2
-    }
-
-    two = {
-      name = "node-group-2"
-
-      instance_types = ["t3.small"]
-
-      min_size     = 1
-      max_size     = 2
-      desired_size = 1
+      min_size     = 3
+      max_size     = 6
+      desired_size = 3
     }
   }
 }
 
 # Create ECR repository
-resource "aws_ecr_repository" "wap-repo" {
-  name                 = "whack-a-pod"
-  image_tag_mutability = "MUTABLE"
+# resource "aws_ecr_repository" "wap-repo" {
+#   name                 = "whack-a-pod"
+#   image_tag_mutability = "MUTABLE"
 
-  image_scanning_configuration {
-    scan_on_push = true
-  }
-}
+#   image_scanning_configuration {
+#     scan_on_push = true
+#   }
+# }
 
 
